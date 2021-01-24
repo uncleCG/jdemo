@@ -13,16 +13,6 @@ import org.springframework.context.annotation.Bean;
 public class HttpApplication {
 
     public static void main(String[] args) {
-        // 初始化IOC容器
-        // （1、创建DefaultListableBeanFactory；
-        //   2、注册Spring内置的BeanFactoryPostProcessor；
-        // ）
-        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext();
-        // 注册启动配置类型AppConfig.class
-        // 扫描添加注解的类并注册到BeanDefinitionMap中；
-        annotationConfigApplicationContext.register(HttpApplication.class);
-        // 初始化spring环境
-        annotationConfigApplicationContext.refresh();
         SpringApplication.run(HttpApplication.class, args);
     }
 
