@@ -143,7 +143,7 @@ public class SignatureUtil {
     }
 
     public static void main(String[] args) {
-        String data = "给我签名吧！";
+        String data = "{\"key\":\"给我签名吧！\"}";
         /*(1)生成公钥和私钥对*/
         KeyPair keyPair = getKeypair();
         String publicKey = Base64.getEncoder().encodeToString(keyPair.getPublic().getEncoded());

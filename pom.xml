@@ -79,5 +79,7 @@
         <module>algorithm</module>
         <module>rocketmq</module>
         <module>apollo</module>
+        <module>design-pattern</module>
+        <module>json</module>
     </modules>
 </project>

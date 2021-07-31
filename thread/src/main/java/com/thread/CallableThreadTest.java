@@ -9,11 +9,11 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author zhangchangyong
  * @date 2020-08-12 10:13
  */
-public class CallableThreadTest implements Callable<Integer> {
+public class CallableThreadTest implements Callable<IntegerTest> {
 
     public static void main(String[] args) {
         CallableThreadTest callableThreadTest = new CallableThreadTest();
-        FutureTask<Integer> futureTask = new FutureTask<>(callableThreadTest);
+        FutureTask<IntegerTest> futureTask = new FutureTask<>(callableThreadTest);
         for (int i = 0; i < 100; i++) {
             System.out.println(ThreadLocalRandom.current().nextLong(10,12) + "@" + Thread.currentThread().getName() + " 的循环变量i的值" + i);
             if (i == 20) {
@@ -30,11 +30,11 @@ public class CallableThreadTest implements Callable<Integer> {
     }
 
     @Override
-    public Integer call() throws Exception {
+    public IntegerTest call() throws Exception {
         int i = 0;
         for (; i < 100; i++) {
             System.out.println(ThreadLocalRandom.current().nextInt(0,2)  + "@" + Thread.currentThread().getName() + " " + i);
         }
-        return i;
+        return null;
     }
 }

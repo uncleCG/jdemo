@@ -1,5 +1,6 @@
 package com.demo.encrypt.util;
 
+import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -24,7 +25,7 @@ public class Md5Util {
     }
 
     public static void main(String[] args) {
-        String content = "上篮得分就离开";
+        String content = "18612485086";
         byte[] md5Bytes = getMD5(content);
         System.out.println(HexUtil.byteArr2HexStr(md5Bytes));
     }

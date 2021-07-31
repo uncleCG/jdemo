@@ -2,6 +2,7 @@ package com.demo.encrypt.util.aes;
 
 
 import com.demo.encrypt.util.base64.Base64Util;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -13,6 +14,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.security.Security;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -31,7 +33,12 @@ public class AesUtil {
      * 不带模式和填充获取 AES 算法，默认使用 AES/ECB/PKCS5Padding
      * 除 ECB 模式以外的其它模式都需要设置偏移量，用以增加加密算法的强度。
      */
-    private static final String CIPHER_ALGORITHM_CBC = "AES/CBC/PKCS5Padding";
+    // private static final String CIPHER_ALGORITHM_CBC = "AES/CBC/PKCS5Padding";
+    /*
+        PKCS7Padding需要引入bcprov-jdk15on jar，
+        https://www.liaoxuefeng.com/wiki/1252599548343744/1305362418368545
+     */
+    private static final String CIPHER_ALGORITHM_CBC = "AES/CBC/PKCS7Padding";
     private static final String CIPHER_ALGORITHM_ECB = "AES/ECB/PKCS5Padding";
 
     /**
@@ -47,6 +54,11 @@ public class AesUtil {
      * 默认的密钥
      */
     private static final String DEFAULT_KEY = "gomeHandy2019";
+
+    static {
+        // 是PKCS7Padding填充方式，则需要添加Bouncy Castle支持
+        Security.addProvider(new BouncyCastleProvider());
+    }
 
     /**
      * @param
